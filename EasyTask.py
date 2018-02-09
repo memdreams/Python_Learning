@@ -46,4 +46,24 @@ class Solution:
                 return ""
         return pre
 
-    
+    # Find if c satisfy a*a + b*b = c
+    def judgeSquareSum(c):
+        """
+        :type c: int
+        :rtype: bool
+        """
+        if c < 0:
+            return False
+        a = 0
+        b = int(math.sqrt(c))
+        # squarelist = [x*x for x in range(0, iternum+1)]
+        while a <= b:
+            if a * a + b * b == c:
+                print(a, b)
+                return True
+            elif a * a + b * b < c:
+                a += 1
+            else:
+                b -= 1
+
+    return False
