@@ -1,8 +1,8 @@
 # Leetcode Easy Task Collection
 
-
-# 643. Maximum Average Subarray I
 class Solution:
+    
+    # 643. Maximum Average Subarray I
     def findMaxAverage(self, nums, k):
         """
         :type nums: List[int]
@@ -23,3 +23,29 @@ class Solution:
         
         return sumSubNums/k
 
+
+    # 14. Longest Common Prefix
+    def longestCommonPrefix(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: str
+        """
+        listLen = len(strs)
+        if listLen == 0:
+            return ""
+        elif listLen == 1:
+            return strs[0]
+        pre = strs[0]
+        for i, string in enumerate(strs):
+            width = max(len(pre), len(string))
+            while width > 0:
+                if pre[:width] == string[:width]:
+                    pre = pre[:width]
+                    break
+                else:
+                    width -= 1
+            if width == 0:
+                return ""
+        return pre
+
+    
