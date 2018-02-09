@@ -33,8 +33,6 @@ class Solution:
         listLen = len(strs)
         if listLen == 0:
             return ""
-        elif listLen == 1:
-            return strs[0]
         pre = strs[0]
         for i, string in enumerate(strs):
             width = max(len(pre), len(string))
