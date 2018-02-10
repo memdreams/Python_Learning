@@ -67,3 +67,19 @@ class Solution:
                 b -= 1
 
     return False
+
+    # 461. Hamming Distance
+    def hammingDistance(self, x, y):
+        """
+        :type x: int
+        :type y: int
+        :rtype: int
+        """
+        c = x^y
+        distance = 0
+        while c > 0:
+            c = c&(c-1)
+            distance += 1
+        
+        return distance
+
