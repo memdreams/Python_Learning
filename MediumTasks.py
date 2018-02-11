@@ -18,4 +18,23 @@ def findRepeatedDnaSequences(s):
             r.append(key)
     return r
     
-    
+# Total Hamming distance Calculation; ultilize the property: the distance in each bit is the multiple between ones and zeros.
+class Solution:
+    def totalHammingDistance(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        distance = 0
+
+        for i in range(32): 
+            ones = 0
+            zero = 0
+            for num in nums:
+                if num & (1<<i):
+                    ones+=1
+                else:
+                    zero+=1
+            distance += ones * zero 
+        
+        return distance
