@@ -83,3 +83,40 @@ class Solution:
         
         return distance
 
+    # 203. Remove Linked List Elements.
+    # class ListNode:
+    #     def __init__(self, x):
+    #         self.val = x
+    #         self.next = None
+    def removeElements(self, head, val):
+        """
+        :type head: ListNode
+        :type val: int
+        :rtype: ListNode
+        """
+        if head == None:
+            return None
+        
+        while head:
+            if head.val == val:
+                head = head.next
+            else:
+                break
+        
+            
+        preNode = head
+        
+        if preNode == None:
+            return None                
+        
+        # currentNode = preNode.next
+        
+        while preNode.next:
+            if preNode.next.val == val:
+                currentNode = preNode.next
+                preNode.next = currentNode.next
+            else:
+                preNode = preNode.next
+                
+        return head
+        
