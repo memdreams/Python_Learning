@@ -12,3 +12,10 @@ Eg:
       total = total+ v
     return total
 
+1.8 Iterators and Generators
+• An iterator is an object that manages an iteration through a series of values. If
+variable, i, identifies an iterator object, then each call to the built-in function,
+next(i), produces a subsequent element from the underlying series, with a
+StopIteration exception raised to indicate that there are no further elements.
+• An iterable is an object, obj, that produces an iterator via the syntax iter(obj).
+
