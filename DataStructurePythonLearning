@@ -19,3 +19,4 @@ next(i), produces a subsequent element from the underlying series, with a
 StopIteration exception raised to indicate that there are no further elements.
 • An iterable is an object, obj, that produces an iterator via the syntax iter(obj).
 
+An instance of a list is an iterable, but not itself an iterator.
