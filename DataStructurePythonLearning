@@ -20,3 +20,9 @@ StopIteration exception raised to indicate that there are no further elements.
 • An iterable is an object, obj, that produces an iterator via the syntax iter(obj).
 
 An instance of a list is an iterable, but not itself an iterator.
+
+
+If语句的条件判断简写：
+  param = n if n >= 0 else −n 
+
+
