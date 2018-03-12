@@ -60,9 +60,56 @@ def choice(data):
     return data[i]
 
 
+# C-1.13
+def reverse(data):
+    n = len(data)
+    reverse_data = []
+    for i in range(1, n + 1):
+        reverse_data.append(data[-i])
+    return reverse_data
+
+# C-1.14
+def pair_odd_product(data):
+    odd_num = set()
+    for i in data:
+        if i % 2 != 0:
+            odd_num.add(i)
+            if len(odd_num) >= 2:
+                return True
+    return False
+
+# C-1.15
+def is_distinct(data):
+    distinctSeq = set()
+    for i in data:
+        distinctSeq.add(i)
+    if len(distinctSeq) == len(data):
+        return True
+    else:
+        return False
+
+# C-1.16 & C-1.17 (not work properly)
+def scale(data, factor):
+    for i, val in enumerate(data):
+        # val *= factor
+        data[i] *= factor
+    return data
+
+# C-1.18
+l1 = [i*(i+1) for i in range(10)]
+
+# C-1.19
+alphaBata = [chr(i) for i in range(97, 97+26)]
+
+# C-1.20
+from random import randint
+
+
+
+
 
 # Test
-print(choice(l))
+print(alphaBata)
 
 
 
