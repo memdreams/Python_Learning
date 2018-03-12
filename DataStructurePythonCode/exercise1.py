@@ -106,10 +106,24 @@ from random import randint
 
 
 
+# P-1.29
+def permutation(s):
+    if len(s) == 1:
+        return [s]
+    perm_list = []
+    for i in set(s):
+        s_stripe = s.replace(i, '')
+        z = permutation(s_stripe)
+
+        for t in z:
+            perm_list.append(i+t)
+    return perm_list
+
+
 
 
 # Test
-print(alphaBata)
+print(permutation('catdog'))
 
 
 
