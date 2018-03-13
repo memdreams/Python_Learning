@@ -103,7 +103,30 @@ alphaBata = [chr(i) for i in range(97, 97+26)]
 
 # C-1.20
 from random import randint
+def shuffle(data):
+    output = []
+    while len(data)>0:
+        i = randint(0, len(data)-1)
+        output.append(data[i])
+        data.remove(data[i])
+    return output
 
+# C-1.21
+def reverse_input():
+    done = False
+    output = []
+    # line = input("Please input: ")
+    while not done:
+        try:
+            line = input("Please input: ")
+            output.append(line)
+        except EOFError:
+            output.reverse()
+            done = True
+    return output
+    # while line:
+    #     output.append(line)
+    # return output.reverse()
 
 
 # P-1.29
@@ -119,11 +142,24 @@ def permutation(s):
             perm_list.append(i+t)
     return perm_list
 
-
+import itertools
+perm = itertools.permutations('catdog')
 
 
 # Test
-print(permutation('catdog'))
+print('\n')
+print(reverse_input())
+
+# import time
+#
+# start = time.time()
+# permutation('catdogabreiu')  #---Time:  148.95268416404724
+# end = time.time()
+# print("---Time: ", end-start)
+# start = time.time()
+# itertools.permutations('catdogabreiu') # ---Time:  0.00012803077697753906
+# end = time.time()
+# print("---Time: ", end-start)
 
 
 
