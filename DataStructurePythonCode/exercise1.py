@@ -115,7 +115,6 @@ def shuffle(data):
 def reverse_input():
     done = False
     output = []
-    # line = input("Please input: ")
     while not done:
         try:
             line = input("Please input: ")
@@ -124,13 +123,73 @@ def reverse_input():
             output.reverse()
             done = True
     return output
-    # while line:
-    #     output.append(line)
-    # return output.reverse()
 
+# C-1.22
+def arrayDotProduct(a, b):
+    if len(a) != len(b):
+        return -1
+    c = []
+    for i in range(len(a)):
+        product = a[i]*b[i]
+        c.append(product)
+    return c
 
-# P-1.29
-def permutation(s):
+# C-1.23
+def catchIndexError(l, i):
+    try:
+        l[i]
+    except IndexError:
+        print("Don’t try buffer overflow attacks in Python!")
+
+# C-1.24
+def countVowels(s):
+    vowelsList = ['a', 'e', 'i', 'o', 'u']
+    countV = 0
+    for i in s:
+        if i in vowelsList:
+            countV += 1
+    return countV
+
+# C-1.25
+def keepChars(s):
+    A = 65
+    Z = 90
+    a = 97
+    z = 122
+    for i in s:
+        if (ord(i) > z or ord(i) < A or Z < ord(i) < a) and i != ' ':
+            s = s.replace(i, '')
+    return s
+
+# C-1.26
+def isFormula(a, b, c):
+    if (a+b == c) or (a == b-c) or (a * b == c) or (a / b == c):
+        print('%d + %d = %d\n', a, b, c)
+        return True
+    else:
+        return False
+
+# C-1.27
+def factors(n):  # generator that computes factors
+    k = 1
+    bignums = []
+    while k*k < n:  # while k < sqrt(n)
+        if n % k == 0:
+            yield k
+            bignums.append(n // k)
+        k += 1
+    if k*k == n:  # special case if n is perfect square
+        yield k
+    bignums.reverse()
+    for i in bignums:
+        yield i
+
+# C-1.27
+def norm(v, p=2):
+    return pow(sum([pow(i, p) for i in v]), 1/p)
+
+# P-1.29 Solution1
+def permutation(s):  # time consuming
     if len(s) == 1:
         return [s]
     perm_list = []
@@ -141,6 +200,9 @@ def permutation(s):
         for t in z:
             perm_list.append(i+t)
     return perm_list
+# P-1.29 Solution2
+# def permutations(s):
+    
 
 import itertools
 perm = itertools.permutations('catdog')
@@ -148,7 +210,8 @@ perm = itertools.permutations('catdog')
 
 # Test
 print('\n')
-print(reverse_input())
+
+print(norm([3, 3, 1, 1, 2], 3))
 
 # import time
 #
