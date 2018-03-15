@@ -188,6 +188,7 @@ def factors(n):  # generator that computes factors
 def norm(v, p=2):
     return pow(sum([pow(i, p) for i in v]), 1/p)
 
+
 # P-1.29 Solution1
 def permutation(s):  # time consuming
     if len(s) == 1:
@@ -200,23 +201,85 @@ def permutation(s):  # time consuming
         for t in z:
             perm_list.append(i+t)
     return perm_list
-# P-1.29 Solution2
-# def permutations(s):
-    
+# P-1.29 Solution2 don't understand well
+def permutations(iterable, r=None):
+    # permutations('ABCD', 2) --> AB AC AD BA BC BD CA CB CD DA DB DC
+    # permutations(range(3)) --> 012 021 102 120 201 210
+    pool = tuple(iterable)
+    n = len(pool)
+    r = n if r is None else r
+    if r > n:
+        return
+    indices = range(n)
+    cycles = range(n, n-r, -1)
+    yield tuple(pool[i] for i in indices[:r])
+    while n:
+        for i in reversed(range(r)):
+            cycles[i] -= 1
+            if cycles[i] == 0:
+                indices[i:] = indices[i+1:] + indices[i:i+1]
+                cycles[i] = n - i
+            else:
+                j = cycles[i]
+                indices[i], indices[-j] = indices[-j], indices[i]
+                yield tuple(pool[i] for i in indices[:r])
+                break
+        else:
+            return
 
 import itertools
 perm = itertools.permutations('catdog')
 
+# P-1.30
+def countMulti2(n):
+    count = 0
+    while n>1:
+        n /= 2
+        count += 1
+    return count
+
+# P-1.31
+def makeChange(charged, given):
+    canadianDollars = {'dime':5, 'cent':10, 'quarter':25,
+                       '1$':1, '2$':2,
+                       '5$':5, '10$':10, '20$':20, '50$':50}
+    changes = given - charged
+    # waiting to do... just a if-else, don't want to list them all
+
+
+# P-1.32 & 33 待做
+
+# P-1.34 略
+
+# P-1.35
+import random
+def birthParadox(n):
+    testBirthdays = []
+    for i in range(n):
+        testBirthdays.append(str(random.randrange(1,31))+str(random.randrange(1,12)))
+    singleBirthdays = set(testBirthdays)
+    return len(testBirthdays)-len(singleBirthdays) # same birthdays number
+
+# P-1.36
+def countwords(l):
+    words = l.split()
+    wordscount = {}
+    for word in words:
+        wordscount[word] = wordscount.get(word, 0) + 1
+    return wordscount
+
 
 # Test
 print('\n')
+print(countwords('he is my husband not your husband hello my darling you are mine you and I he and she you'))
 
-print(norm([3, 3, 1, 1, 2], 3))
+import time
 
-# import time
-#
 # start = time.time()
-# permutation('catdogabreiu')  #---Time:  148.95268416404724
+# c = permutations((range(0,3)))
+# for i in c:
+#     next(c)
+# # permutations('catdogabreiu') #---Time:  148.95268416404724
 # end = time.time()
 # print("---Time: ", end-start)
 # start = time.time()
