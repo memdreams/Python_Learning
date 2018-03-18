@@ -39,3 +39,38 @@ def myfunc1():
 myfunc1()
 myfunc1()
 
+
+# Test a loop in linked list
+class ListNode(object):
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+def isCycled(head):
+    slowP = fastP = head
+    n = 0
+    while (slowP and fastP and fastP.next):
+        slowP = slowP.next
+        fastP = fastP.next.next
+        n += 1
+        if slowP == fastP:
+            print("The loop is found! {} times search.\n".format(n))
+            return True
+
+    print('There is no loop in the linked list!\n')
+    return False
+
+def creatNode():
+    listNodes = []
+    for i in range(10):
+        node = ListNode(i)
+        listNodes.append(node)
+
+    for i, node in enumerate(listNodes):
+        node.next = listNodes[(i+1)%10]
+    return listNodes
+
+# Test Case
+listNodes = creatNode()
+isCycled(listNodes[0])
+
