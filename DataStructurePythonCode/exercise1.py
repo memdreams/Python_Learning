@@ -270,8 +270,9 @@ def countwords(l):
 
 
 # Test
-print('\n')
-print(countwords('he is my husband not your husband hello my darling you are mine you and I he and she you'))
+if __name__ == '__main__':
+    print('\n')
+    print(countwords('he is my husband not your husband hello my darling you are mine you and I he and she you'))
 
 import time
 

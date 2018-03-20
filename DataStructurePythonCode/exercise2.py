@@ -46,6 +46,10 @@ class ListNode(object):
         self.data = data
         self.next = None
 
+    @classmethod  # the decorator use as a Factory
+    def count(cls, a):
+        return cls(a)
+
 def isCycled(head):
     slowP = fastP = head
     n = 0
@@ -73,4 +77,38 @@ def creatNode():
 # Test Case
 listNodes = creatNode()
 isCycled(listNodes[0])
+
+
+import cProfile # cProfile.run('testfunc()') is used for test the running time of the function
+
+
+# R-2.4
+class Flower(object):
+    def __init__(self, name='flower', petal=5, price=5.0):
+        self._name = name
+        self._petal = petal
+        self._price = price
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, val):
+        self._name = val
+
+    @property
+    def petal(self):
+        return self._petal
+
+    @property
+    def price(self):
+        return self._price
+
+
+if __name__ == '__main__':
+    a = Flower()
+    b = Flower('iry', 3, 10)
+    a.name = 'lily'
+    print(b.petal)
 
