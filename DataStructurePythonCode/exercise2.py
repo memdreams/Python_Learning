@@ -182,7 +182,18 @@ class Vector:
 
 
 
-
+# P-2.33
+###Write a Python program that inputs a polynomial in standard algebraic notation and outputs the first derivative of that polynomial.
+import re
+def f_prime(polynomial):
+    """
+    :arg polynomial like f(x) = 2*x^5 + 3*x^2 + x - 1 input as a list [-1,1,3,0,0,2] in assent order
+    outputs: the first derivative of that polynomial
+    """
+    coeff = []
+    for i in range(1, len(polynomial)):
+        coeff.append(polynomial[i] * i)
+    return coeff
 
 
 
@@ -194,5 +205,5 @@ if __name__ == '__main__':
     v[2] = 5
     u = Vector([1,2,3,4,5])
     x = u + v
-    print(x._coords)
-
+    # print(x._coords)
+    print(f_prime([-1,1,3,0,0,2]))
