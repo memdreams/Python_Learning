@@ -195,6 +195,55 @@ def f_prime(polynomial):
         coeff.append(polynomial[i] * i)
     return coeff
 
+# P-2.36
+import random
+class Bear:
+    pass
+class Fish:
+    pass
+# Bear = 'Bear'
+# Fish = 'Fish'
+class Ecosystem(object):
+    def __init__(self, n_bear=2, n_fish=3, n=10):
+        self.bear = n_bear
+        self.fish = n_fish
+        self.river = [None for _ in range(n)]
+        self.initSet()
+
+    def initSet(self):
+        n_bear = self.bear
+        n_fish = self.fish
+        while n_bear:
+            i = random.randrange(len(self.river))
+            if self.river[i] is None:
+                self.river[i] = Bear()
+                n_bear -= 1
+
+        while n_fish:
+            i = random.randrange(len(self.river))
+            if self.river[i] is None:
+                self.river[i] = Fish()
+                n_fish -= 1
+
+        print(self.river)
+
+    def randomProcess(self):
+        pass
+
+    def collide(self, i, j):
+        obj1 = self.river[i]
+        obj2 = self.river[j]
+        if type(obj1) == type(obj2):
+            c = random.randrange(len(self.river))
+            if self.river[c] is None:
+                self.river[c] = Fish() if isinstance(obj1, Fish) else Bear()
+        else:
+            if isinstance(obj1, Fish):
+                self.river[i] = None
+            else:
+                self.river[j] = None
+
+
 
 
 
@@ -206,4 +255,5 @@ if __name__ == '__main__':
     u = Vector([1,2,3,4,5])
     x = u + v
     # print(x._coords)
-    print(f_prime([-1,1,3,0,0,2]))
+    # print(f_prime([-1,1,3,0,0,2]))
+    e = Ecosystem()
