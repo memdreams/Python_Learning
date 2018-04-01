@@ -18,8 +18,8 @@ def findRepeatedDnaSequences(s):
             r.append(key)
     return r
     
-# Total Hamming distance Calculation; ultilize the property: the distance in each bit is the multiple between ones and zeros.
 class Solution:
+    # Total Hamming distance Calculation; ultilize the property: the distance in each bit is the multiple between ones and zeros.
     def totalHammingDistance(self, nums):
         """
         :type nums: List[int]
@@ -38,3 +38,24 @@ class Solution:
             distance += ones * zero 
         
         return distance
+
+    # 3. Given a string, find the length of the longest substring without repeating characters.
+    def lengthOfLongestSubstring(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        r = 0
+        if len(s):
+            noRepeat = s[0]
+            r = 1
+            for i in range(1, len(s)):
+                if s[i] in noRepeat:
+                    r = max(len(noRepeat), r)
+                    noRepeat = noRepeat[(noRepeat.index(s[i])+1) : ] + s[i]
+                else:
+                    noRepeat += s[i]
+            r = max(len(noRepeat), r)
+        return r    
+        
+    
