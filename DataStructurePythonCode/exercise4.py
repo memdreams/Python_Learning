@@ -59,7 +59,18 @@ def binSearch(l, target, low, high):
             return binSearch(l, target, low, middle-1)
         else:
             return binSearch(l, target, middle+1, high)
-    # return -1  # a is not in l
+
+import os
+def disk_usage(path):
+    """ Return the bytes used by a file/folder and any descendents """
+    total = os.path.getsize(path)
+    if os.path.isdir(path):
+        for filename in os.listdir(path):
+            childpath = os.path.join(path, filename)
+            total += disk_usage(childpath)
+
+    print('{0:<7}'.format(total), path)
+    return total
 
 
 # R-4.1
@@ -77,4 +88,5 @@ if __name__ == '__main__':
     # end2 = time.time()
     # elapse2 = end2 - start2
 
-    print(binSearch([1,2,3,4,5,6,8,9], 8, 0, 7))
+    # print(binSearch([1,2,3,4,5,6,8,9], 8, 0, 7))
+    disk_usage('/Users/Dreams/UOttawa/Study/DataStructure/pythonCode')
