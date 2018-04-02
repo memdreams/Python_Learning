@@ -46,6 +46,20 @@ def draw_interval(central_length):
         draw_interval(central_length-1)
 
 # Binary Search
+def binSearch(l, target, low, high):
+    """ l is a sorted list. """
+    n = len(l)
+    if low > high:
+        return False
+    else:
+        middle = (low+high)//2
+        if l[middle] == target:
+            return True
+        elif l[middle] > target:
+            return binSearch(l, target, low, middle-1)
+        else:
+            return binSearch(l, target, middle+1, high)
+    # return -1  # a is not in l
 
 
 # R-4.1
@@ -63,4 +77,4 @@ if __name__ == '__main__':
     # end2 = time.time()
     # elapse2 = end2 - start2
 
-    draw_ruler(2, 4)
+    print(binSearch([1,2,3,4,5,6,8,9], 8, 0, 7))
