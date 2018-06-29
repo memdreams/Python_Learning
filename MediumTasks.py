@@ -57,5 +57,20 @@ class Solution:
                     noRepeat += s[i]
             r = max(len(noRepeat), r)
         return r    
+       
+    # 201. Bitwise AND of Numbers Range
+    def rangeBitwiseAnd(self, m, n):
+        """
+        :type m: int
+        :type n: int
+        :rtype: int
+        """
+        shift = 0
+        while m != n:
+            shift += 1
+            m = m >> 1
+            n = n >> 1
         
+        return m << shift
+    
     
