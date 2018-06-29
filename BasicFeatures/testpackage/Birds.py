@@ -1,4 +1,4 @@
-
+# Create a class
 class Birds(object):
 	members = []
 	def __init__(self, name):
