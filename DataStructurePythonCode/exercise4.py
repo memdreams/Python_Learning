@@ -75,6 +75,23 @@ def disk_usage(path):
 
 # R-4.1
 
+# Additional Question
+# Match paired parentheses
+def is_paired_brackets(s):
+    brackets = {'}': '{', ')': '(', ']': '['}
+    rSymb, lSymb = brackets.keys(), brackets.values()
+
+    arr = []
+    for c in s:
+        if c in lSymb:
+            arr.append(c)
+        elif c in rSymb:
+            if arr and arr[-1]:
+                arr.pop()
+            else:
+                return False
+
+    return not arr
 
 import time
 if __name__ == '__main__':
@@ -87,6 +104,8 @@ if __name__ == '__main__':
     # factorial1(100)
     # end2 = time.time()
     # elapse2 = end2 - start2
+    s = '(jidjf){(5+1)*2+[(3**2)]}'
+    print(is_paired_brackets(s))
 
     # print(binSearch([1,2,3,4,5,6,8,9], 8, 0, 7))
-    disk_usage('/Users/Dreams/UOttawa/Study/DataStructure/pythonCode')
+    # disk_usage('/Users/Dreams/UOttawa/Study/DataStructure/pythonCode')
