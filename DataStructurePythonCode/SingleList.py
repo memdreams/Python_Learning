@@ -209,4 +209,15 @@ listNodes = creatNode()
 isCycled(listNodes[0])
 
 
+def rangeBitwiseAnd(self, m, n):
+    """
+    :type m: int
+    :type n: int
+    :rtype: int
+    """
+    r = m
+    for j in range(m + 1, n + 1):
+        r = r & j
+
+    return r
 
