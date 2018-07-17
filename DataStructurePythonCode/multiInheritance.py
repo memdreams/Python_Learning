@@ -3,32 +3,76 @@
 
 import pprint
 import cProfile
+import shutil
 
-class A(object):
-    def go(self):
-        print("A")
 
-class B(A):
-    def go(self):
-        super(B, self).go()
-        print("B")
-
-class C(A):
-    def go(self):
-        super(C, self).go()
-        print("C")
-
-class D(B, C):
-    # pass
-    def go(self):
-        super(D, self).go()
-        print("D")
-
-# b = B()
+# class A(object):
+#     def go(self):
+#         print("A")
+#
+# class B(A):
+#     def go(self):
+#         super(B, self).go()
+#         print("B")
+#
+# class C(A):
+#     _up = 34
+#     def go(self):
+#         super(C, self).go()
+#         self.__up = 43
+#         print("C", self.__up)
+#
+#     print(locals())
+#
+# class D(B, C):
+#     # pass
+#     def go(self):
+#         super(D, self).go()
+#         print("D")
+#
+# class E(D, B, C):
+#     def go(self):
+#         super(E, self).go()
+#         print("E")
+#
+#
 # d = D()
+# d.go()
+# pprint.pprint(D.__mro__)
+#
+# c = C()
+# c.go()
+# print(c._up)  # equle to `print(c.__getattribute__('_up'))` and `print(getattr(c, '_up'))`
+# print(c.go.__self__)
+# print(c.go.__func__)
+# e = E()
 
 # b.go()
 # d.go()
+# e.go()
+# pprint.pprint(E.__mro__)
+# print(globals())
+
+
+class Mapping:
+    def __init__(self, iterable):
+        self.items_list = []
+        self.__update(iterable)
+
+    def update(self, iterable):
+        for item in iterable:
+            self.items_list.append(item)
+
+    __update = update
+
+class MappingSubclass(Mapping):
+    def update(self, keys, values):
+        for item in zip(keys, values):
+            self.items_list.append(item)
+
+m = MappingSubclass([4,6,7,8])
+m.update(['a','b','c','d'], [1,2,3,4])
+print(m.items_list)
 # cProfile.run('d.go()')
 # pprint.pprint(D.__mro__)
 
@@ -125,25 +169,25 @@ def askfor(k, *args, **kwargs):
     for index, v in kwargs.items():
         print(index, v, end=',')
     print()
-
-import json
-
-
-with open('netperf', 'w') as f:
-    # f.write(b'0123456789abcdef')
-    # print(f.seek(5))
-    # print(f.tell())
-    # readdata = f.read(1)
-    # print(f.tell())
-    # print(f.seek(-3, 2))
-    # print(f.read(1))
-    x = [1, 2, 'a']
-    json.dump(x, f)
-
-with open('netperf', 'r') as f:
-    x = json.load(f)
-    s = f.read()
-    print(s)
+#
+# import json
+#
+#
+# with open('netperf', 'w') as f:
+#     # f.write(b'0123456789abcdef')
+#     # print(f.seek(5))
+#     # print(f.tell())
+#     # readdata = f.read(1)
+#     # print(f.tell())
+#     # print(f.seek(-3, 2))
+#     # print(f.read(1))
+#     x = [1, 2, 'a']
+#     json.dump(x, f)
+#
+# with open('netperf', 'r') as f:
+#     x = json.load(f)
+#     s = f.read()
+#     print(s)
 
 
 
@@ -154,4 +198,6 @@ with open('netperf', 'r') as f:
 #             break
 #     else:
 #         print(n, "is a prime.")
+
+
 

@@ -43,7 +43,8 @@ def is_matched(s):
 
 
 
-
+# A good example for delete the repeated word
+re.sub(r'(\b[a-z]+) \1', r'\1', 'cat in the the hat')  #'cat in the hat'
 
 
 s1 = '[ab[ ASDGw245ew3.'
