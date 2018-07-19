@@ -169,27 +169,23 @@ def askfor(k, *args, **kwargs):
     for index, v in kwargs.items():
         print(index, v, end=',')
     print()
-#
-# import json
-#
-#
-# with open('netperf', 'w') as f:
-#     # f.write(b'0123456789abcdef')
-#     # print(f.seek(5))
-#     # print(f.tell())
-#     # readdata = f.read(1)
-#     # print(f.tell())
-#     # print(f.seek(-3, 2))
-#     # print(f.read(1))
-#     x = [1, 2, 'a']
-#     json.dump(x, f)
-#
-# with open('netperf', 'r') as f:
-#     x = json.load(f)
-#     s = f.read()
-#     print(s)
 
 
+# try the examples in https://rhettinger.wordpress.com/2011/05/26/super-considered-super/
+from collections import Counter, OrderedDict
+
+class OrderedCounter(Counter, OrderedDict):
+    """Counter that remembers the order elements are first seen"""
+    def __repr__(self):
+        return '%s(%r)' % (self.__class__.__name__, OrderedDict(self))
+
+    def __reduce__(self):
+        return self.__class__, (OrderedDict(self),)
+
+oc = OrderedCounter("abracadabra")
+print(OrderedCounter.__repr__(oc))
+print(OrderedCounter.__reduce__(oc))
+print(OrderedCounter.__doc__)
 
 # for n in range(2,10):
 #     for x in range(2, n):
