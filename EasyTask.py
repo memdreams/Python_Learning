@@ -119,4 +119,42 @@ class Solution:
                 preNode = preNode.next
                 
         return head
+    
+    # 496. Next Greater Element I
+    # simple solution O(m * n)
+    def nextGreaterElement(self, nums1, nums2):
+        """
+        :type nums1: List[int]
+        :type nums2: List[int]
+        :rtype: List[int]
+        """
+        result = []
         
+        for i in range(len(nums1)):
+            index = nums2.index(nums1[i])
+            l = len(nums2)  
+            for j in range(index+1, l):
+                if nums1[i] < nums2[j]:
+                    result.append(nums2[j])
+                    break
+            if len(result) < i+1:
+                result.append(-1)
+        return result
+    
+    # enhenced solution O(m+n)
+    def nextGreaterElement(self, nums1, nums2):
+        """
+        :type nums1: List[int]
+        :type nums2: List[int]
+        :rtype: List[int]
+        """
+        d = {}
+        stack = []
+        
+        for x in nums2:
+            while len(stack) and stack[-1] < x:
+                d[stack.pop()] = x
+            stack.append(x)
+            
+        return [d.get(i, -1) for i in nums1]
+    
