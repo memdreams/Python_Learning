@@ -152,7 +152,7 @@ class Solution:
         stack = []
         
         for x in nums2:
-            while len(stack) and stack[-1] < x:
+            while (not stack) and stack[-1] < x:
                 d[stack.pop()] = x
             stack.append(x)
             
