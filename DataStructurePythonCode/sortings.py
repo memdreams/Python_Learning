@@ -26,7 +26,7 @@ def selection_sort(l):
 # Insertion sort: descending
 def insertion_sort(l=[5,3,8,7,1,-2]):
     n = len(l)
-    # traversing the list, the first element in l doesn't need to be sort
+    # traversing the list, the first element in l doesn't need to be sorted
     for i in range(1, n):
         # compare the next element to the last element in the sorted list l[:i-1]
         if l[i] < l[i-1]:
@@ -148,9 +148,9 @@ def qsort_inplace(l, start, end):
 if __name__=='__main__':
     ll = [5,3,8,7,1, -2, 4, 2, 2]
     # num = time.clock()
-    # print("insertion-sort:", insertion_sort(ll))
+    print("insertion-sort:", insertion_sort(ll))
 
     # print(shell_sort(ll))
     # print(merge_sort(ll))
-    qsort_inplace(ll, 0, len(ll)-1)
+    # qsort_inplace(ll, 0, len(ll)-1)
     print(ll)

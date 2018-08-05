@@ -1,0 +1,15 @@
+$def with (greeting)
+
+$if greeting:
+  <p>I just wanted to say <em style="color: green; font-size: 2em;">$greeting</em>.<p>
+$else:
+  <em>Hello</em> World!
+
+<br/>
+<p><a href="hello">Form</a></p>
+
+<form action="index.html" method="POST" enctype="multipart/form-data">
+  <label for="file">Choose a file:</label>
+  <input type="file" name="photo" accept="image/*">
+  <input type="submit" value="Upload">
+</form>
