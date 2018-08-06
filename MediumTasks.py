@@ -139,7 +139,7 @@ class Solution:
                 neg = -1
             elif c.isdigit():
                 digits = (digits or '') + c
-            if c == '[':
+            elif c == '[':
                 stackList.append(NestedInteger())
             else:
                 if digits is not None:
