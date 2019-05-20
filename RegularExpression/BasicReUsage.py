@@ -23,6 +23,8 @@ def is_allowed_special_symbol(s):
 # 11. matches a word at end of string, with optional punctuation.
 # 12. matches a word containing 'z'.
 # 13. a word containing 'z', not start or end of the word.
+# 14: match a string that contains only upper and lowercase letters, numbers, and underscores.
+# 16: remove leading zeros from an IP address.
 def is_matched(s):
     p = r'ab*?'  # 2
     p = r'ab+?'  # 3
@@ -36,6 +38,8 @@ def is_matched(s):
     p = r'\w+\S*$'  # 11
     p = r'\w*z\w*?'  # 12 '\w*z.\w*'  why?
     p = r'\Bz\B'  # 13
+    p = r'^[a-zA-z_\d]*$' # 14
+
     m = re.search(p, s)
     return bool(m)
 
@@ -49,7 +53,7 @@ re.sub(r'(\b[a-z]+) \1', r'\1', 'cat in the the hat')  #'cat in the hat'
 
 s1 = '[ab[ ASDGw245ew3.'
 s2 = '-=-]['
-s3 = 'Abbbbabbbbbbbb'
+s3 = 'Abbb_ba3bbbbbbbb'
 
 print(is_matched(s1))
 print(is_matched(s3))

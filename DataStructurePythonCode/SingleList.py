@@ -221,3 +221,23 @@ def rangeBitwiseAnd(self, m, n):
 
     return r
 
+from itertools import combinations
+
+def enum_combination(s, k):
+    # sort s at first to a list
+    sort_s = sorted(s)
+    for i in range(k):
+        l = list(combinations(sort_s, i+1))
+        for item in l:
+            sub_s = ''.join(item)
+            print(sub_s)
+
+if __name__ == "__main__":
+    # data = input()
+    # s, k = data.split()
+    # k = int(k)
+
+    s, k = 'HACK', 2
+    enum_combination(s, k)
+
+

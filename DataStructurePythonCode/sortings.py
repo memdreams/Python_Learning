@@ -59,7 +59,7 @@ def shell_sort(l, step=1):
 
 
 # Merge Sort: Recursive implementation
-def merge_sort(l):
+def merge_sort(l): # O(nlogn)
     if len(l) < 2:
         return l
     # divide
@@ -85,7 +85,7 @@ def merge(left, right):
 
 
 # Quicksort: divide-and-conquer (dig a hole and fill the hole)
-def quicksort(l):
+def quicksort(l):  #O(nlogn)
     indexL, indexR = 0, len(l)-1
     less, greater, eql = [], [], []
     if len(l) < 2:
@@ -141,6 +141,33 @@ def qsort_inplace(l, start, end):
     return
 
 
+# heap-sort
+
+
+# counting sort O(n+k); n = len(l), k = len(set(l))
+def counting_sort(l):
+    d = {}
+    for i in l:
+        d.setdefault(i, 0)
+        d[i] += 1
+    l = []
+    for key, value in sorted(d.items()):
+        for j in range(value):
+            l.append(key)
+    return l
+
+
+
+
+
+# Radix-sort O(nk)
+
+
+# Bucket-sort O(n+k)
+
+
+
+
 
 
 
@@ -149,8 +176,10 @@ if __name__=='__main__':
     ll = [5,3,8,7,1, -2, 4, 2, 2]
     # num = time.clock()
     print("insertion-sort:", insertion_sort(ll))
-
+    print(ll)
     # print(shell_sort(ll))
     # print(merge_sort(ll))
     # qsort_inplace(ll, 0, len(ll)-1)
-    print(ll)
+    l = [5, 3, 8, 7, 1, -2, 4, 2, 2]
+    print(counting_sort(l))
+

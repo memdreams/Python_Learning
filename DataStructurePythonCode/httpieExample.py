@@ -1,3 +1,0 @@
-import httpie
-
-httpie.ExitStatus
