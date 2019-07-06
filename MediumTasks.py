@@ -152,3 +152,31 @@ class Solution:
                     else:
                         return top
     
+    
+    # 6. ZigZag Conversion
+    def convert(self, s, numRows):
+        """
+        :type s: str
+        :type numRows: int
+        :rtype: str
+        """
+        # calculate number of columns
+        circle = numRows + (numRows - 2)
+        l = len(s) // circle
+        m = 1 if len(s) % circle else 0
+        numCols = l + l * (numRows - 2) + m
+        
+        res = []
+        for x in range(l + m):
+            res.append(s[x*circle])
+        for i in range(1, numRows-1):
+            res.append(s[i])
+            for j in range(1, l + m):
+                if i + j*circle < len(s):
+                    res.append(s[i + j*circle])
+                    res.insert(-1, s[j*circle - i])
+        for j in range(l):
+            res.append(s[numRows-1 + j*circle])
+        
+        return ''.join(res)
+            
