@@ -160,11 +160,12 @@ class Solution:
         :type numRows: int
         :rtype: str
         """
-        # calculate number of columns
+        if numRows == 1: 
+            return s
+        
         circle = numRows + (numRows - 2)
         l = len(s) // circle
         m = 1 if len(s) % circle else 0
-        numCols = l + l * (numRows - 2) + m
         
         res = []
         for x in range(l + m):
